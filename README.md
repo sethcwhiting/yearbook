@@ -1,1 +1,1 @@
-# The code repository for [gpcs.live](https://www.gpcs.live)
+# The code repository for [gpcs.live](https://gpcs.live)
