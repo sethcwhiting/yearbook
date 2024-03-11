@@ -32,10 +32,43 @@
         dy: 5
     };
 
+    // Paddle objects
+    const paddleHeight = 80;
+    const paddleWidth = 10;
+    const leftPaddle = {
+        x: 10,
+        y: canvas.height / 2 - paddleHeight / 2,
+        dy: 0,
+        speed: 5
+    };
+    const rightPaddle = {
+        x: canvas.width - paddleWidth - 10,
+        y: canvas.height / 2 - paddleHeight / 2,
+        dy: 0,
+        speed: 5
+    };
+
     // Draw ball function
     function drawBall() {
         ctx.beginPath();
         ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Draw paddles function
+    function drawPaddles() {
+        // Draw left paddle
+        ctx.beginPath();
+        ctx.rect(leftPaddle.x, leftPaddle.y, paddleWidth, paddleHeight);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+        ctx.closePath();
+
+        // Draw right paddle
+        ctx.beginPath();
+        ctx.rect(rightPaddle.x, rightPaddle.y, paddleWidth, paddleHeight);
         ctx.fillStyle = 'white';
         ctx.fill();
         ctx.closePath();
@@ -52,9 +85,28 @@
         }
 
         // Reverse direction if the ball hits the left or right
-        if (ball.x + ball.dx > canvas.width - ball.radius || ball.x + ball.dx < ball.radius) {
-            ball.dx = -ball.dx;
+        if (ball.x + ball.dx > canvas.width - ball.radius) {
+            if (ball.y > rightPaddle.y && ball.y < rightPaddle.y + paddleHeight) {
+                ball.dx = -ball.dx;
+            } else {
+                // Player 1 scores
+                resetBall();
+            }
+        } else if (ball.x + ball.dx < ball.radius) {
+            if (ball.y > leftPaddle.y && ball.y < leftPaddle.y + paddleHeight) {
+                ball.dx = -ball.dx;
+            } else {
+                // Player 2 scores
+                resetBall();
+            }
         }
+    }
+
+    // Reset ball position function
+    function resetBall() {
+        ball.x = canvas.width / 2;
+        ball.y = canvas.height / 2;
+        ball.dx = -ball.dx;
     }
 
     // Clear canvas function
@@ -62,12 +114,54 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    // Update paddles position function
+    function updatePaddlesPosition() {
+        leftPaddle.y += leftPaddle.dy;
+        rightPaddle.y += rightPaddle.dy;
+
+        // Keep paddles within canvas bounds
+        if (leftPaddle.y < 0) {
+            leftPaddle.y = 0;
+        } else if (leftPaddle.y + paddleHeight > canvas.height) {
+            leftPaddle.y = canvas.height - paddleHeight;
+        }
+
+        if (rightPaddle.y < 0) {
+            rightPaddle.y = 0;
+        } else if (rightPaddle.y + paddleHeight > canvas.height) {
+            rightPaddle.y = canvas.height - paddleHeight;
+        }
+    }
+
     // Draw function
     function draw() {
         clearCanvas();
         drawBall();
+        drawPaddles();
         updateBallPosition();
+        updatePaddlesPosition();
     }
+
+    // Keyboard event listeners for paddle movement
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'w') {
+            leftPaddle.dy = -leftPaddle.speed;
+        } else if (event.key === 's') {
+            leftPaddle.dy = leftPaddle.speed;
+        } else if (event.key === 'ArrowUp') {
+            rightPaddle.dy = -rightPaddle.speed;
+        } else if (event.key === 'ArrowDown') {
+            rightPaddle.dy = rightPaddle.speed;
+        }
+    });
+
+    document.addEventListener('keyup', function(event) {
+        if (event.key === 'w' || event.key === 's') {
+            leftPaddle.dy = 0;
+        } else if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+            rightPaddle.dy = 0;
+        }
+    });
 
     // Main game loop
     setInterval(draw, 30);
