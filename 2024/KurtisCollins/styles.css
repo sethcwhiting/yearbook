@@ -1,0 +1,118 @@
+/*Header*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header-container {
+    background-color: #1F13DD;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navigation ul li:hover {
+	text-decoration: underline;
+}
+
+.navigation ul li:last-child {
+    margin-right: 20;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.image-scroll-container {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.image-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-wrapper img {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+}
+
+
+/*Image Slider */
+#prev-btn,
+#next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+	
+}
+
+#prev-btn {
+	left: 10px;
+}
+
+#next-btn {
+	right: 10px;
+}
+
+
+#prev-btn:hover,
+#next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/*Count Down*/
+.countdown-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+}
+
+#countdown div {
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#countdown div:first-child {
+    margin-left: 0;
+}
+
+#countdown div:last-child {
+    margin-right: 0;
+}
+

@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Kurtis Collins</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kurtis Collins</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="main.js" defer></script>
 </head>
 <body>
-	<h1>
-		<a href="https://images.immediate.co.uk/production/volatile/sites/3/2019/12/Episode_III_Revenge_Christensen07-8bbd9e4.jpg?quality=90&webp=true&resize=900,600">The Chosen One?</a>
-	</h1>
+<header class="header-container">
+	<div class="logo" id="logo">Kurtis Collins</div>
+	<nav class="navigation">
+		<ul>
+			<li><a href="#" id="home-link">Home</a></li>
+			<li><a href="#" id="games-link">Games</a></li>
+			<li><a href="#" id="downloads-link">Downloads</a></li>
+		</ul>
+	</nav>
+</header>
+
+<section class="image-scroll-container">
+    <div class="image-wrapper">
+        <img src="images\image1.png" alt="Image 1" class="active">
+        <img src="images\image2.png" alt="Image 2">
+        <img src="images\image3.png" alt="Image 3">
+    </div>
+    <button id="prev-btn">&larr;</button>
+    <button id="next-btn">&rarr;</button>
+</section>
+	
+<section class="countdown-section">
+    <h2>Graduation Countdown</h2>
+    <div id="countdown"></div>
+</section>
+
+
 </body>
 </html>
