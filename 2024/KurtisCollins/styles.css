@@ -44,18 +44,22 @@ body {
 .image-scroll-container {
     position: relative;
     overflow: hidden;
-    margin: 20px 0;
+	background-color: #C0C0C0
 }
 
 .image-wrapper {
     display: flex;
     transition: transform 0.5s ease-in-out;
+	margin-right: 750px;
+	margin-left: 750px;
 }
 
 .image-wrapper img {
     flex: 0 0 auto;
     width: 100%;
     height: auto;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 
 

@@ -29,7 +29,7 @@ function updateImagePosition() {
 
 //Beginning Of Countdown Code
 // Target date for the countdown (June 7, 2024, at 6 PM)
-const targetDate = new Date('March 19, 2024 12:50:00').getTime();
+const targetDate = new Date('June 7, 2024 18:00:00').getTime();
 
 // Update the countdown every second
 const countdownInterval = setInterval(updateCountdown, 1000);
@@ -49,16 +49,16 @@ function updateCountdown() {
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         let countdownHtml = '';
-        if (weeks > 0) {
+        if (weeks >= 1) {
             countdownHtml += `<div>${weeks < 10 ? '0' + weeks : weeks} weeks</div>`;
         }
-        if (days > 0) {
+        if (days >= 1 || weeks >= 1) {
             countdownHtml += `<div>${days < 10 ? '0' + days : days} days</div>`;
         }
-        if (weeks > 0 || days > 0) {
+        if (hours >= 1 || days >= 1 || weeks >= 1) {
             countdownHtml += `<div>${hours < 10 ? '0' + hours : hours} hours</div>`;
         }
-        if (weeks > 0 || days > 0 || hours > 0) {
+        if (minutes >= 1 || hours >= 1 || days >= 1 || weeks >= 1) {
             countdownHtml += `<div>${minutes < 10 ? '0' + minutes : minutes} minutes</div>`;
         }
         countdownHtml += `<div>${seconds < 10 ? '0' + seconds : seconds} seconds</div>`;
