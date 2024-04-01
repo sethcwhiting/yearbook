@@ -1,60 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Personal Website</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-Wk4C7B2NN7l0fh0VKH1P0C+k6Ukaoo0jHgJkFgGLQkdsU7yvfG6VMd6D2dvx8VoTt+Ed52vNKRdWtSakU1rE5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yearbook Page</title>
+<style>
+    body {
+        font-family: Times New Roman, sans-seriff;
+        background-color: #FFFFFF;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: #FFFFFF;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .header h1 {
+        color: #000000;
+          }
+    .header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+    .header p {
+        color: #000000;
+    }
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 100px;
+    }
+    .photo {
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+    .caption {
+        text-align: center;
+        margin-top: 5px;
+        color: #000000;
+    }
+    .footer {
+        text-align: center;
+        margin-top: 1000px;
+        color: #999;
+    }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Your Name</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
+<div class="container">
+    <div class="header">
+        <h1>2024 Yearbook - Seth Mishkin</h1>
+        <p>I don't know what I'm doing</p>
+    </div>
+    <div class="photo-grid">
+        <div class="photo">
+            <img src="image1.jpg" alt="Photo 1">
+            <div class="caption">This is a great photo</div>
         </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h2>Welcome to My Personal Website</h2>
-            <p>This is where you can learn more about me and my work.</p>
-            <a href="#" class="btn">Learn More</a>
+        <div class="photo">
+            <img src="image2.jpg" alt="Photo 2">
+            <div class="caption">Amazing photo</div>
         </div>
-    </section>
-
-    <section class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero.</p>
+        <div class="photo">
+            <img src="image3.jpg" alt="Photo 3">
+            <div class="caption">Wonderful photography</div>
+                  </div>
+        <div class="photo">
+            <img src="image3.jpg" alt="Photo 4">
+            <div class="caption">Wow so cool</div>
+                  </div>
+        <div class="photo">
+            <img src="image3.jpg" alt="Photo 5">
+            <div class="caption">Nice</div>
+                  </div>
+        <div class="photo">
+            <img src="image3.jpg" alt="Photo 6">
+            <div class="caption">This is a photo</div>
         </div>
-    </section>
-
-    <section class="portfolio">
-        <div class="container">
-            <h2>Portfolio</h2>
-            <div class="portfolio-items">
-                <!-- Your portfolio items go here -->
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </footer>
+    </div>
+    <div class="footer">
+        <p>&copy; Seth Mishkin Yearbook</p>
+    </div>
+</div>
 </body>
 </html>
