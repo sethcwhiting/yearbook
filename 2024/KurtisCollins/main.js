@@ -1,30 +1,45 @@
 //Beginning Of Button Code For Main Image Slider
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const imageWrapper = document.querySelector('.image-wrapper');
-const images = document.querySelectorAll('.image-wrapper img');
-
 let currentIndex = 0;
+const items = document.querySelectorAll('.carousel-section .carousel-item');
+const numItems = items.length;
+const carouselInner = document.querySelector('.carousel-section .carousel-inner');
 
-prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateImagePosition();
-    }
-});
-
-nextBtn.addEventListener('click', () => {
-    if (currentIndex < images.length - 1) {
-        currentIndex++;
-        updateImagePosition();
-    }
-});
-
-function updateImagePosition() {
-    const imageWidth = images[0].offsetWidth;
-    const newPosition = -currentIndex * imageWidth;
-    imageWrapper.style.transform = `translateX(${newPosition}px)`;
+function showSlide(index) {
+  const offset = -index * 100 / numItems;
+  carouselInner.style.transform = `translateX(${offset}%)`;
+  currentIndex = index;
 }
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % numItems;
+  showSlide(currentIndex);
+}
+
+function prevSlide() {
+  const lastIndex = numItems - 1;
+  
+  if (currentIndex === 0) {
+    // Move the first item to the last position
+    const firstItem = items[0];
+    const lastItem = items[lastIndex];
+    carouselInner.appendChild(firstItem); // Append the first item to move it to the end
+    currentIndex = lastIndex; // Update the currentIndex to point to the new last item
+  } else {
+    // Move the current item to the first position
+    const currentItem = items[currentIndex];
+    const firstItem = items[0];
+    carouselInner.insertBefore(currentItem, firstItem); // Move the current item to the first position
+    currentIndex = 0; // Update the currentIndex to point to the new first item
+  }
+  
+  showSlide(currentIndex);
+}
+
+
+
+showSlide(0); // Start with the first slide
+
+
 //End Of Button Code For Main Slider
 
 //Beginning Of Countdown Code
