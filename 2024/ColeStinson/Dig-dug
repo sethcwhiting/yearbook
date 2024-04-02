@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dig Dug</title>
+  <style>
+    body { margin: 0; }
+    canvas { display: block; margin: auto; background-color: #000; }
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas" width="640" height="480"></canvas>
+  <script>
+    // JavaScript code here
+  </script>
+</body>
+</html>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+const tileSize = 32;
+const numRows = 15;
+const numCols = 20;
+
+let player = {
+  x: 0,
+  y: 0,
+  size: tileSize,
+  color: '#f00',
+  isShooting: false,
+  isAlive: true
+};
+
+let dirtGrid = [];
+
+let bullets = [];
+let enemies = [];
+
+let spawnTimer = 0;
+
+function init() {
+  for (let i = 0; i < numRows; i++) {
+    dirtGrid[i] = [];
+    for (let j = 0; j < numCols; j++) {
+      dirtGrid[i][j] = true; // true means dirt, false means empty space
+    }
+  }
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Draw dirt grid
+  for (let i = 0; i < numRows; i++) {
+    for (let j = 0; j < numCols; j++) {
+      if (dirtGrid[i][j]) {
+        ctx.fillStyle = '#964B00';
+        ctx.fillRect(j * tileSize, i * tileSize, tileSize, tileSize);
+      }
+    }
+  }
+
+  // Draw player
+  if (player.isAlive) {
+    ctx.fillStyle = player.color;
+    ctx.fillRect(player.x, player.y, player.size, player.size);
+  }
+
+  // Draw bullets
+  bullets.forEach(bullet => {
+    ctx.fillStyle = '#00f';
+    ctx.fillRect(bullet.x, bullet.y, bullet.size, bullet.size);
+  });
+
+  // Draw enemies
+  enemies.forEach(enemy => {
+    ctx.fillStyle = '#0f0';
+    ctx.fillRect(enemy.x, enemy.y, enemy.size, enemy.size);
+  });
+}
+
+function dig(x, y) {
+  const row = Math.floor(y / tileSize);
+  const col = Math.floor(x / tileSize);
+  if (row >= 0 && row < numRows && col >= 0 && col < numCols) {
+    dirtGrid[row][col] = false;
+  }
+}
+
+function movePlayer(dx, dy) {
+  if (!player.isAlive) return;
+
+  player.x += dx * tileSize;
+  player.y += dy * tileSize;
+
+  // Check for collision with enemies
+  enemies.forEach(enemy => {
+    if (player.x < enemy.x + enemy.size &&
+        player.x + player.size > enemy.x &&
+        player.y < enemy.y + enemy.size &&
+        player.y + player.size > enemy.y) {
+      player.isAlive = false;
+      setTimeout(() => { player.isAlive = true; player.x = 0; player.y = 0; }, 1000); // Respawn after 1 second
+    }
+  });
+}
+
+function shoot() {
+  if (!player.isAlive || player.isShooting) return;
+
+  bullets.push({ x: player.x + player.size / 2 - 2, y: player.y, size: 4, speed: 8 });
+  player.isShooting = true;
+  setTimeout(() => { player.isShooting = false; }, 300); // Limit shooting rate
+}
+
+function update() {
+  // Update bullets
+  bullets.forEach((bullet, bulletIndex) => {
+    bullet.y -= bullet.speed;
+    // Remove bullets that go off-screen
+    if (bullet.y < 0) {
+      bullets.splice(bulletIndex, 1);
+    }
+
+    // Check for bullet collision with enemies
+    enemies.forEach((enemy, enemyIndex) => {
+      if (bullet.x < enemy.x + enemy.size &&
+          bullet.x + bullet.size > enemy.x &&
+          bullet.y < enemy.y + enemy.size &&
+          bullet.y + bullet.size > enemy.y) {
+        bullets.splice(bulletIndex, 1);
+        enemies.splice(enemyIndex, 1);
+      }
+    });
+  });
+
+  // Update enemies (simple movement pattern)
+  enemies.forEach(enemy => {
+    if (enemy.x <= 0 || enemy.x + enemy.size >= canvas.width) {
+      enemy.speed *= -1; // Reverse direction at canvas edges
+    }
+    enemy.x += enemy.speed;
+  });
+
+  // Spawn enemies every 5 seconds with two enemies at a time
+  spawnTimer++;
+  if (spawnTimer >= 50) { // 50 * 100ms = 5 seconds
+    enemies.push({ x: Math.random() * (canvas.width - tileSize), y: 0, size: tileSize, speed: 2 });
+    enemies.push({ x: Math.random() * (canvas.width - tileSize), y: 0, size: tileSize, speed: 2 });
+    spawnTimer = 0;
+  }
+}
+
+init();
+document.addEventListener('keydown', handleKeyDown);
+setInterval(() => { draw(); update(); }, 100); // Redraw and update the game every 100 milliseconds
+
+function handleKeyDown(event) {
+  switch (event.key) {
+    case 'ArrowUp':
+      movePlayer(0, -1);
+      break;
+    case 'ArrowDown':
+      movePlayer(0, 1);
+      break;
+    case 'ArrowLeft':
+      movePlayer(-1, 0);
+      break;
+    case 'ArrowRight':
+      movePlayer(1, 0);
+      break;
+    case ' ':
+      shoot();
+      break;
+  }
+}
