@@ -1,0 +1,120 @@
+/*Header*/
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header-container {
+    background-color: #1F13DD;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navigation ul li:hover {
+	text-decoration: underline;
+}
+
+.navigation ul li:last-child {
+    margin-right: 20;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.carousel-section {
+  	margin: 20px auto; /* Adjust margin as needed */
+ 	perspective: 1000px; /* Depth of the 3D space */
+	background-color: #C9C9C9;
+	
+}
+
+.carousel {
+  	position: relative;
+  	width: 100%;
+  	max-width: 600px; /* Adjust as needed */
+  	margin: 0 auto;
+}
+
+.carousel-inner {
+	display: flex;
+	justify-content: center;
+  	transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  	flex: 0 0 33.33%; /* Adjust to fit three items */
+  	padding: 10px;
+}
+
+.carousel-item img {
+  	max-width: 100%;
+  	height: auto;
+  	border-radius: 5px;
+}
+
+.prev, .next {
+  	position: absolute;
+  	top: 50%;
+  	transform: translateY(-50%);
+  	background-color: rgba(0, 0, 0, 0.5);
+  	color: white;
+  	border: none;
+ 	padding: 10px;
+ 	cursor: pointer;
+}
+
+.prev {
+  	left: 10px;
+}
+
+.next {
+  	right: 10px;
+}
+
+/*Count Down*/
+.countdown-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+}
+
+#countdown div {
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#countdown div:first-child {
+    margin-left: 0;
+}
+
+#countdown div:last-child {
+    margin-right: 0;
+}
+
