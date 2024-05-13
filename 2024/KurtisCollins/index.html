@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Kurtis Collins</title>
+	<title>Seized | This Cite Has Been Seized By The FBI</title>
 	<link rel="stylesheet" href="styles.css">
 	<script src="main.js" defer></script>
 </head>
 <body>
-	
+
 <header class="header-container">
 	<div class="logo" id="logo">Kurtis Collins</div>
 	<nav class="navigation">
@@ -20,24 +20,46 @@
 	</nav>
 </header>
 
-<section class="carousel-section">
-  <div class="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active"><img src="IMages/image1.png" alt="Image 1"></div>
-      <div class="carousel-item"><img src="Images/image2.png" alt="Image 2"></div>
-      <div class="carousel-item"><img src="Images/image3.png" alt="Image 3"></div>
-      <!-- Add more images as needed -->
-    </div>
-    <button class="prev" onclick="prevSlide()">❮</button>
-    <button class="next" onclick="nextSlide()">❯</button>
-  </div>
-</section>
+<div class="slider">
+	<div class="wrapper">
+		<div style="background-image: url('https://i.imgur.com/V9EdFjc.png')" class="item item1 active">
+			<div class="item__info">
+				<p class="item__year"><span></span></p>
+				<p class="item__name"><span></span></p>
+				<a href="javascript:void(0)" class="btn"><span>Bio</span></a>
+			</div>
+		</div>
+
+		<div style="background-image: url('https://i.imgur.com/3wxxmH9.jpeg')" class="item item2">
+			<div class="item__info">
+				<!--p class="item__year"><span>Happy Little Accidents</span></p-->
+				<p class="item__name"><span>Happy Little Accidents</span></p>
+				<a href="http://happylittleaccidents.net:1111/" class="btn"><span>Discover more</span></a>
+			</div>
+		</div>
+
+
+		<div style="background-image: url('https://i.imgur.com/V9EdFjc.png')" class="item item3">
+			<div class="item__info">
+				<p class="item__year"><span></span></p>
+				<p class="item__name"><span>Unassigned</span></p>
+				<a href="javascript:void(0)" class="btn"><span>Discover more</span></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="arrow arrow-next"></div>
+	<div class="arrow arrow-prev"></div>
+</div>
 
 <section class="countdown-section">
     <h2>Graduation Countdown</h2>
     <div id="countdown"></div>
 </section>
 
+<div class="cover-image">
+	<img src="Images/seized.png" alt="Cover Image"/>
+</div>
 
 </body>
 </html>
