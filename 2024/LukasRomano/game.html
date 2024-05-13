@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Math Guessing Game</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        input {
+            padding: 5px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Math Guessing Game!</h1>
+    <p>Guess a number between 1 and 100:</p>
+    <input type="text" id="guess" />
+    <button onclick="checkGuess()">Submit Guess</button>
+    <p id="feedback"></p>
+
+    <script>
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+        let prevGuess = null;
+
+        function checkGuess() {
+            const guessInput = document.getElementById("guess");
+            const guess = parseInt(guessInput.value);
+
+            if (guess < 1 || guess > 100) {
+                alert("Please enter a number between 1 and 100.");
+            } else if (guess === randomNumber) {
+                document.getElementById("feedback").innerText = "Congratulations! You guessed the correct number.";
+            } else {
+                if (prevGuess !== null) {
+                    const prevDiff = Math.abs(randomNumber - prevGuess);
+                    const currDiff = Math.abs(randomNumber - guess);
+                    if (prevDiff > currDiff) {
+                        document.getElementById("feedback").innerText = "Warmer";
+                    } else {
+                        document.getElementById("feedback").innerText = "Colder";
+                    }
+                }
+                prevGuess = guess;
+                guessInput.value = "";
+            }
+        }
+    </script>
+</body>
+</html>
+    
