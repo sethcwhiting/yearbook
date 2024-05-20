@@ -1,0 +1,315 @@
+
+/*Seized*/
+.cover-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Ensure the image is above other elements */
+}
+
+.cover-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire area */
+}
+
+/* Header */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    background-color: #FFFFFF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3; /* Add a higher z-index to ensure it's above other elements */
+    width: 100%; /* Ensure the header spans the entire width */
+}
+
+.header-container {
+    background-color: #000000;
+    color: #fff;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigation ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navigation ul li:hover {
+    text-decoration: underline;
+}
+
+.navigation ul li:last-child {
+    margin-right: 20px;
+}
+
+.navigation ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Image Slider */
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.slider-container {
+    height: calc(100% - 80px); /* Subtract the header height */
+    overflow: hidden;
+}
+
+.slider {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    perspective: 1000px;
+    will-change: transform;
+    z-index: 1;
+}
+
+ .slider:not(.zoom) .item {
+	 transition: all 900ms ease-in-out, opacity 400ms linear 0ms;
+	 opacity: 0;
+}
+ .slider:not(.zoom) .item.active {
+	 width: 100% !important;
+	 height: 100% !important;
+	 line-height: 100%;
+	 position: relative;
+	 display: flex;
+	 opacity: 1;
+	 pointer-events: all;
+}
+ .slider:not(.zoom) .item.active span {
+	 top: 0;
+	 transform: scale(1);
+}
+ .slider:not(.zoom) .item.active .btn {
+	 transform: scale(1);
+	 height: 44px;
+}
+ .slider:not(.zoom) .item.active .btn span {
+	 top: 16px;
+}
+ .slider:not(.zoom) .item.item1 {
+	 transform: rotateY(0deg) translateZ(0);
+}
+ .slider:not(.zoom) .item.item2 {
+	 transform: rotateY(120deg) translateZ(0);
+}
+ .slider:not(.zoom) .item.item3 {
+	 transform: rotateY(240deg) translateZ(0);
+}
+ .slider.zoom .item {
+	 transition: all 900ms ease-in-out, opacity 300ms linear 500ms;
+	 opacity: 0.5;
+}
+ .wrapper {
+	 height: 100%;
+	 width: 100%;
+	 position: absolute;
+	 transform-style: preserve-3d;
+	 transition: transform 900ms ease-in-out;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 will-change: transform;
+}
+ .item {
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 position: absolute;
+	 width: 39%;
+	 height: 50%;
+	 line-height: 50%;
+	 color: #fff;
+	 background-repeat: no-repeat;
+	 background-size: cover !important;
+	 background-position: center;
+	 transition: all 900ms ease-in-out;
+	 transform-origin: center;
+	 pointer-events: none;
+	 will-change: transform;
+}
+ .item.item1 {
+	 transform: rotateY(0deg) translateZ(500px);
+	 background-position: 50% 0%;
+}
+ .item.item1.active {
+	 transform: rotateY(0deg) translateZ(250px);
+	 opacity: 1;
+}
+ .item.item2 {
+	 transform: rotateY(120deg) translateZ(500px);
+}
+ .item.item2.active {
+	 transform: rotateY(120deg) translateZ(250px);
+	 opacity: 1;
+}
+ .item.item3 {
+	 transform: rotateY(240deg) translateZ(550px);
+}
+ .item.item3.active {
+	 transform: rotateY(240deg) translateZ(250px);
+	 opacity: 1;
+}
+ .item__info {
+	 text-align: center;
+	 text-transform: uppercase;
+	 font-weight: bold;
+	 will-change: transform;
+}
+ .item__year {
+	 font-size: 30px;
+	 letter-spacing: 3px;
+	 margin-bottom: 35px;
+	 overflow: hidden;
+	 line-height: 30px;
+	 will-change: transform;
+}
+ .item__year span {
+	 position: relative;
+	 top: 27px;
+	 transition: all 900ms linear;
+	 display: inline-block;
+	 transform: scale(0.7);
+	 white-space: nowrap;
+	 will-change: transform;
+}
+ .item__name {
+	 font-size: 55px;
+	 letter-spacing: 3px;
+	 margin-bottom: 62px;
+	 overflow: hidden;
+	 line-height: 55px;
+	 will-change: transform;
+	 text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+}
+
+ .item__name span {
+	 position: relative;
+	 top: 48px;
+	 transition: all 900ms ease-in-out;
+	 display: inline-block;
+	 transform: scale(0.7);
+	 white-space: nowrap;
+	 will-change: transform;
+}
+ .btn {
+	 background: #fff;
+	 color: #120d0b;
+	 padding: 0 33px;
+	 text-decoration: none;
+	 display: inline-block;
+	 transform: scale(0.7);
+	 height: 0;
+	 position: relative;
+	 overflow: hidden;
+	 transition: all 900ms ease-in-out;
+	 will-change: transform;
+}
+ .btn span {
+	 position: relative;
+	 top: 16px;
+	 will-change: transform;
+}
+ .arrow {
+	 background: #8e2037;
+	 position: absolute;
+	 top: 50%;
+	 transform: translateY(-50%);
+	 cursor: pointer;
+	 border-radius: 50%;
+	 width: 70px;
+	 height: 70px;
+	 transition: all 0.1s ease-in-out;
+	 transform-origin: 50% 50%;
+	 will-change: transform;
+}
+ .arrow:hover {
+	 transform: translateY(-50%) scale(1.1);
+}
+ .arrow.arrow-next {
+	 right: 5em;
+	 background: url('https://alikinvv.github.io/3d-carousel/build/img/arrow-right.svg') no-repeat center #8e2037;
+	 background-size: 38px !important;
+}
+ .arrow.arrow-prev {
+	 left: 5em;
+	 background: url('https://alikinvv.github.io/3d-carousel/build/img/arrow-left.svg') no-repeat center #8e2037;
+	 background-size: 38px !important;
+}
+ @media (min-width: 1400px) {
+	 .slider {
+		 max-height: 700px;
+		 max-width: 1500px;
+	}
+	 .arrow-next {
+		 right: -110px !important;
+	}
+	 .arrow-prev {
+		 left: -110px !important;
+	}
+}
+
+
+
+/*Count Down*/
+body, html {
+    height: 100%; /* Ensure full height of the viewport */
+    overflow-y: auto; /* Allow scrolling */
+}
+
+.slider-container {
+    height: calc(100% - 80px); /* Subtract the header height */
+    overflow: hidden;
+}
+
+.countdown-section {
+    text-align: center;
+    margin-top: 20px; /* Adjust margin as needed */
+    z-index: 2; /* Ensure countdown section appears above the slider */
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+}
+
+#countdown div {
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#countdown div:first-child {
+    margin-left: 0;
+}
+
+#countdown div:last-child {
+    margin-right: 0;
+}
