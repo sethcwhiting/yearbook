@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bea Bergst</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/2024/BeaBergst/styles.css">
   <!-- https://www.nytimes.com/games/wordle/index.html https://www.nytimes.com/games/connections -->
 </head>
 <body>
@@ -22,13 +22,21 @@
       <img src="/2024/BeaBergst/IMG_5308.jpg"/>
       <p></p>
     </section>
-  </main>
-
+  </main> 
+  <div id="wordle">
+    <div class="container">
+      <h1>Wordle Game</h1>
+      <div id="board"></div>
+      <input type="text" id="guessInput" maxlength="5" placeholder="Enter your guess">
+      <button onclick="makeGuess()">Guess</button>
+      <p id="message"></p>
+  </div>
+</div>
+  
   <footer>
     <!-- Your footer content goes here -->
     <p>&copy; 2024 Bea All rights reserved.</p>
   </footer>
+  <script src="/2024/BeaBergst/script.js"></script>
 </body>
 </html>
-
-}
