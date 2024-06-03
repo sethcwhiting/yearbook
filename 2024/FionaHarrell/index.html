@@ -64,6 +64,17 @@
             padding: 20px;
             text-align: center;
         }
+        #snake {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid #fff;
+        }
     </style>
 </head>
 <body>
@@ -89,14 +100,17 @@
         <div class="video">
             <h2>Music</h2>
             <audio controls loop>
-                <source src="./song.mp3" type="audio/mpeg">
+                <source src="/2024/FionaHarrell/song.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2024 We Own the Night. All rights reserved.</p>
-    </footer>
+<div id="snake">
+    <canvas id="gameCanvas" width="400" height="400"></canvas>
+</div>
+<footer>
+    <p>&copy; 2024 We Own the Night. All rights reserved.</p>
+</footer>
 </body>
+<script src="/2024/FionaHarrell/snake.js"></script>
 </html>
