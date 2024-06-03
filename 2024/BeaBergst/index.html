@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bea Bergst</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/2024/BeaBergst/styles.css">
   <!-- https://www.nytimes.com/games/wordle/index.html https://www.nytimes.com/games/connections -->
 </head>
 <body>
@@ -24,12 +24,12 @@
     </section>
   </main> 
   <div id="wordle">
-  <h1>Wordle Game</h1>
-  <div id="game-container">
+    <div class="container">
+      <h1>Wordle Game</h1>
       <div id="board"></div>
-      <input type="text" id="guess-input" maxlength="5" placeholder="Enter a 5-letter word" />
-      <button id="submit-button">Submit</button>
-      <div id="message"></div>
+      <input type="text" id="guessInput" maxlength="5" placeholder="Enter your guess">
+      <button onclick="makeGuess()">Guess</button>
+      <p id="message"></p>
   </div>
 </div>
   
